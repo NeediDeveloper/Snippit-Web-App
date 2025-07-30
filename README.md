@@ -34,7 +34,7 @@ Snippit is a minimalist microblogging platform where users can share quick thoug
 ## 🔧 Setup Instructions
 
 1. **Clone this repository**
-   git clone https://github.com/YOUR_USERNAME/snippit.git
+   git clone https://github.com/NeediDeveloper/Snippit-Web-App.git
    cd snippit
 
 2. **Create a Virtual Environmet**
