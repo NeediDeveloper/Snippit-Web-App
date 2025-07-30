@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block title %} Terms - {{ app_name }} {% endblock %}
+
+{% block content %}
+
+<section class="py-16 px-4">
+  <div class="max-w-4xl mx-auto">
+    <h2 class="text-3xl font-bold mb-6 text-center">Terms & Conditions</h2>
+
+    <p class="text-gray-300 mb-4">
+      By using Snippit, you agree to follow our rules and respect other users on the platform.
+    </p>
+
+    <ul class="list-disc pl-6 text-gray-400 space-y-3">
+      <li><strong>User Conduct:</strong> Users must not post content that is hateful, illegal, abusive, or infringes on others' rights.</li>
+      <li><strong>Account Security:</strong> Keep your login credentials secure. You are responsible for any activity under your account.</li>
+      <li><strong>Content Ownership:</strong> You own your posts, but grant Snippit the right to display them on the platform.</li>
+      <li><strong>Platform Rights:</strong> We reserve the right to suspend or remove accounts that violate our terms.</li>
+      <li><strong>Modifications:</strong> Terms may change over time. Continued use means you accept any updated terms.</li>
+    </ul>
+
+    <p class="mt-6 text-sm text-gray-500">
+      Last updated: July 29, 2025. For concerns or inquiries, email us at <a href="#" class="text-teal-400 underline">legal@snippit.com</a>.
+    </p>
+  </div>
+</section>
+
+{% endblock %}

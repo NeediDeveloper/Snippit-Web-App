@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+
+{% block title %} Home - {{ app_name }} {% endblock %} 
+
+{% block content %}
+
+<section class="py-16">
+    <div class="overflow-hidden w-full h-32">
+  <svg class="w-full h-full" viewBox="0 0 1200 100" preserveAspectRatio="none">
+    <path id="wavePath1" fill="transparent" d="M0,50 Q300,0 600,50 T1200,50" />
+    <text fill="white" font-size="20" font-family="sans-serif">
+      <textPath href="#wavePath1" startOffset="0%">
+        <animate attributeName="startOffset" from="-100%" to="0%" dur="20s" repeatCount="indefinite" />
+        SNIPPIT — SHARE FREELY — SPEAK RAW — CONNECT — SNIPPIT — SHARE FREELY — SNIPPIT — CONNECT — SPEAK RAW — SHARE FREELY — SNIPPIT —
+        SNIPPIT — SHARE FREELY — SPEAK RAW — CONNECT — SNIPPIT — SHARE FREELY — SNIPPIT — CONNECT — SPEAK RAW — SHARE FREELY — SNIPPIT —
+      </textPath>
+    </text>
+  </svg>
+</div>
+    <div class="max-w-3xl mx-auto text-center px-4 py-10">
+        <h1 class="text-4xl font-bold logo-clr uppercase mb-4">Welcome to Snippit</h1>
+        <p class="text-lg mb-6">
+            Snippit is where your smallest thoughts find the biggest audiences — because every voice deserves to be heard, no matter how brief. 
+        </p>
+        <a href="{% url 'all_tweets' %}" class="inline-block px-6 py-3 rounded-lg btn-s">Start Snipping</a>
+        
+    </div>
+    <div class="overflow-hidden w-full h-32 rotate-180">
+  <svg class="w-full h-full" viewBox="0 0 1200 110" preserveAspectRatio="none">
+    <path id="wavePath2" fill="transparent" d="M0,50 Q300,120 600,50 T1200,100" />
+    <text fill="white" font-size="20" font-family="sans-serif">
+      <textPath href="#wavePath2" startOffset="0%">
+        <animate attributeName="startOffset" from="-100%" to="0%" dur="20s" repeatCount="indefinite" />
+            SNIPPIT — THOUGHTS MATTER — POST SMALL — MAKE IMPACT — SNIPPIT —
+            SNIPPIT — THOUGHTS MATTER — POST SMALL — MAKE IMPACT — SNIPPIT —
+            SNIPPIT — THOUGHTS MATTER — POST SMALL — MAKE IMPACT — SNIPPIT —
+            SNIPPIT — THOUGHTS MATTER — POST SMALL — MAKE IMPACT — SNIPPIT —
+    </textPath>
+    </text>
+    </svg>
+    </div>
+
+</section>
+
+<section class="py-16">
+    <div class="columns-1 sm:columns-2 lg:columns-3 gap-4 max-w-6xl mx-auto">
+        {% for tweet in tweets %}
+            {% include "tweet_card.html" %}
+        {% empty %}
+            <p class="text-white">No snippits available.</p>
+        {% endfor %}
+    </div>
+
+    <div class="text-center mt-8">
+        <a href="{% url 'all_tweets' %}" class="inline-block px-6 py-3 rounded-lg btn-s">View All Snippits</a>    
+    </div>
+</section>
+
+<section class=" py-16 px-4">
+  <h2 class="text-3xl text-center text-white font-bold mb-10">Why Snippit?</h2>
+  <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
+    {% for line in benefit_lines %}
+    <div class="bg-clr p-6 rounded-lg shadow-lg text-white">
+      <p class="text-base">{{ line }}</p>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+{% endblock %}
+

@@ -1,0 +1,63 @@
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'styles.css'%}">
+    <link rel="shortcut icon" href="{% static 'Snippit/Snippit-icon.png' %}" type="image/x-icon">
+        {% with app_name="Snippit" %}
+            <title>{% block title %}{{ app_name }}{% endblock %}</title>
+        {% endwith %}
+    {% tailwind_css %}
+</head>
+<body class="bg-[#00130c] text-white ">
+    <header class="border-b border-gray-100 py-3 bg-clr">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex">
+                    <a href="{% url 'home' %}" class="flex items-center">
+                        <img src="{% static 'Snippit/Snippit-logo.png' %}" alt="Snippit Logo" class="w-40">
+                    </a>
+                    <nav class="hidden md:flex space-x-4 ml-10 mt-5">
+                        <a href="{% url 'home' %}" class="hover:text-[#47bb8e]">Home</a>
+                        <a href="{% url 'all_tweets' %}" class="hover:text-[#47bb8e]">Snippits</a>
+                        <a href="{% url 'about' %}" class="hover:text-[#47bb8e]">About</a>
+                    </nav>
+                </div>
+                <div class="flex items-center gap-5">
+                    {% if user.is_authenticated %}
+                    <form action="{% url 'logout' %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="px-4 py-2 btn-d rounded">
+                            Logout
+                        </button>
+                    </form>
+                    {% else %}
+                        <a href="{% url 'login' %}" class="btn-s py-2 px-4 rounded">Login</a>
+                        <a href="{% url 'register' %}" class="px-4 py-2 btn-s rounded">Register</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="min-h-screen py-10">
+        {% block content %}
+        
+        {% endblock %}
+    </div>
+
+        <footer class="border-t border-gray-100 bg-clr">
+        <div class="max-w-7xl mx-auto px-4 py-6 flex justify-between items-center text-sm">
+            <p>&copy; {% now "Y" %} Snippit. All rights reserved.</p>
+
+            <div class="space-x-4">
+                <a href="{% url 'privacy_policy' %}">Privacy Policy</a>
+                <a href="{% url 'terms' %}">Terms</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+
+{% block title %} Tweets - {{ app_name }}{% endblock %}
+
+{% block content %}
+
+<h1 class="text-5xl font-bold uppercase text-white text-center">Community Feed</h1>
+<div class="flex justify-end mb-4">
+<a href="{% url 'tweet_create' %}" class="inline-block px-5 py-3 mx-10  rounded-full btn-s" ><i class="fa-solid fa-pencil"></i></a>
+</div>
+
+<div class="columns-1 sm:columns-2 lg:columns-3 gap-4 max-w-6xl mx-auto my-20">
+    {% for tweet in tweets %}
+        {% include "tweet_card.html" %}
+    {% empty %}
+        <p class="text-white">No tweets yet.</p>
+    {% endfor %}
+</div>
+
+{% endblock %}

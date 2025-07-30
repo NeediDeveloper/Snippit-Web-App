@@ -1,0 +1,44 @@
+.btn-s{
+    background-color: #47bb8e;
+    color: #053c27;
+    font-weight: bold;
+    transition: all 0.2s ease;
+    border: 2px solid #47bb8e;
+}
+
+.btn-s:hover {
+    background-color: #053c27;
+    color: #47bb8e;
+    font-weight: bold;
+    border: 2px solid #47bb8e;
+}
+
+
+.btn-d{
+    background-color: rgb(117, 3, 3);
+    color: white;
+    font-weight: bold;
+    transition: all 0.1s ease-in-out;
+}
+
+.btn-d:hover {
+    background-color: rgb(176, 5, 5);
+    color: white;
+    font-weight: bold;
+}
+
+.logo-clr{
+    color: #47bb8e;
+}
+
+.logo-clr2{
+    background-color: #47bb8e;
+}
+
+.bg-clr{
+    background-color: #053c27;
+}
+
+.fg-clr{
+    color: #053c27;
+}

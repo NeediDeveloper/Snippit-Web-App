@@ -1,0 +1,22 @@
+<div class="break-inside-avoid bg-clr rounded-lg shadow-md p-4 mb-4">
+    <div class="flex items-center gap-3 mb-3">
+        <img src="https://ui-avatars.com/api/?name={{ tweet.user.username }}" alt="avatar" class="w-10 h-10 rounded-full">
+        <div>
+            <h3 class="font-semibold text-white">@{{ tweet.user.username }}</h3>
+            <p class="text-xs text-gray-300">{{ tweet.created_at|date:"M d, Y" }}</p>
+        </div>
+    </div>
+
+    {% if tweet.photo %}
+    <img src="{{ tweet.photo.url }}" class="w-full rounded-lg mb-3 object-contain border-1" alt="{{ tweet.text|truncatewords:10 }}">
+    {% endif %}
+
+    <p class="text-gray-200 text-sm">{{ tweet.text }}</p>
+
+    {% if tweet.user == user %}
+    <div class="flex justify-end gap-2 mt-3">
+        <a href="{% url 'tweet_edit' tweet.id %}" class=" py-1.5 px-4 btn-s rounded-lg">Edit</a>
+        <a href="{% url 'tweet_delete' tweet.id %}" class="py-1.5 px-4 btn-d rounded-lg">Delete</a>
+    </div>
+    {% endif %}
+</div>

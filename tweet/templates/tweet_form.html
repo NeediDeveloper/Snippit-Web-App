@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+
+{% block title %} Create New Tweet  {% endblock %}
+
+{% block content %}
+
+<h1 class="text-3xl font-bold uppercase text-white text-center mb-6">
+    {% if form.instance.pk %}
+    Edit Tweet 
+    {% else %}
+    Create New Tweet
+    {% endif %}
+</h1>
+
+<form method="post" enctype="multipart/form-data" class="max-w-xl mx-auto bg-clr p-6 rounded-lg shadow-md space-y-6">
+    {% csrf_token %}
+
+    <div>
+        <label for="id_text" class="block text-sm font-medium text-gray-300 mb-1" >Tweet</label>
+        <input 
+            type="text" 
+            name="text" 
+            id="id_text"
+            
+            value="{{ form.text.value|default_if_none:'' }}"
+            class="w-full px-4 py-2 rounded-lg bg-[#00130c] text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-[#47bb8e]"
+        >
+        {% if form.text.errors %}
+            <p class="text-red-500 text-sm mt-1">{{ form.text.errors.0 }}</p>
+        {% endif %}
+    </div>
+
+    <div>
+        <label for="id_photo" class="block text-sm font-medium text-gray-300 mb-1">Image</label>
+        <input 
+            type="file" 
+            name="photo" 
+            id="id_photo"
+            class="w-full px-4 py-2 rounded-lg bg-[#00130c] text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-[#47bb8e]"
+        >
+        {% if form.photo.errors %}
+            <p class="text-red-500 text-sm mt-1">{{ form.photo.errors.0 }}</p>
+        {% endif %}
+    </div>
+
+    <div class="flex items-center justify-between">
+        <a href="{% url 'all_tweets' %}" class="text-[#47bb8e] hover:text-white"><i class="fa-solid fa-arrow-left"></i> Go Back</a>
+        <button type="submit" class="btn-s py-2 px-6 rounded-lg shadow">
+            Submit
+        </button>
+        
+    </div>
+</form>
+
+{% endblock %}
